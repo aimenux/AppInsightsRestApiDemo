@@ -1,3 +1,4 @@
+![.NET Core](https://github.com/aimenux/AppInsightsRestApiDemo/workflows/.NET%20Core/badge.svg)
 # AppInsightsRestApiDemo
 ```
 Using AppInsights Rest Api to retrieve metrics
