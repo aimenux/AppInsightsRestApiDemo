@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using App.Extensions;
+using App.Metrics;
 using App.Providers;
-using App.Queries;
 
 namespace App.Reporters
 {

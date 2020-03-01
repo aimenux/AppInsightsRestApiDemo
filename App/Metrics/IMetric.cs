@@ -1,4 +1,4 @@
-﻿namespace App.Queries
+﻿namespace App.Metrics
 {
     public interface IMetric
     {
