@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using App.Extensions;
 using App.Providers;
 using App.Queries;
+using App.Reporters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -26,6 +27,11 @@ namespace App
 
             var services = new ServiceCollection();
 
+            services.AddTransient<IReporter, Reporter>();
+            services.AddTransient<IMetric, RequestsNumberMetric>();
+            services.AddTransient<IMetric, RequestsFailedMetric>();
+            services.AddTransient<IMetric, RequestsDurationMetric>();
+            services.AddTransient<IMetric, ExceptionsNumberMetric>();
             services.Configure<Settings>(configuration.GetSection(nameof(Settings)));
             services.AddHttpClient<IAppInsightsProvider, AppInsightsProvider>((provider, client) =>
             {
@@ -37,14 +43,8 @@ namespace App
             });
 
             var serviceProvider = services.BuildServiceProvider();
-            var appInsightsProvider = serviceProvider.GetRequiredService<IAppInsightsProvider>();
-
-            foreach (var (name, query) in MetricsQueries.All)
-            {
-                var response = await appInsightsProvider.GetInsights(query);
-                ConsoleColor.Blue.WriteLine($"Query {name}: {query}");
-                ConsoleColor.Gray.WriteLine($"Response: {response}");
-            }
+            var reporter = serviceProvider.GetRequiredService<IReporter>();
+            await reporter.PrintAsync();
             
             ConsoleColor.Yellow.WriteLine("Press any key to exit !");
             Console.ReadKey();
