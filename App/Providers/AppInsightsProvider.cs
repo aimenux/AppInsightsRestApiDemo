@@ -1,5 +1,6 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
+using App.Extractors;
 using Microsoft.Extensions.Options;
 
 namespace App.Providers

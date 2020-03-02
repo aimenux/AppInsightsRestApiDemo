@@ -3,6 +3,7 @@ using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using App.Extensions;
+using App.Extractors;
 using App.Metrics;
 using App.Providers;
 using App.Reporters;
@@ -32,6 +33,7 @@ namespace App
             services.AddTransient<IMetric, RequestsFailedMetric>();
             services.AddTransient<IMetric, RequestsDurationMetric>();
             services.AddTransient<IMetric, ExceptionsNumberMetric>();
+            services.AddTransient<IExtractorFactory, ExtractorFactory>();
             services.Configure<Settings>(configuration.GetSection(nameof(Settings)));
             services.AddHttpClient<IAppInsightsProvider, AppInsightsProvider>((provider, client) =>
             {
