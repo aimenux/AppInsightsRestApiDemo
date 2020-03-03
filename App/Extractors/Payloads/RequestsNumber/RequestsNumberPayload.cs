@@ -1,5 +1,4 @@
-﻿using App.Extractors.Payloads.RequestsFailed;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace App.Extractors.Payloads.RequestsNumber
 {

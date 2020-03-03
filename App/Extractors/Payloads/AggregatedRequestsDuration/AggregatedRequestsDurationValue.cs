@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace App.Extractors.Payloads.RequestsDuration
+namespace App.Extractors.Payloads.AggregatedRequestsDuration
 {
-    internal class RequestsDurationValue
+    internal class AggregatedRequestsDurationValue
     {
         [JsonProperty("start")]
         public DateTime StartDate { get; set; }
@@ -16,6 +16,6 @@ namespace App.Extractors.Payloads.RequestsDuration
         public string Interval { get; set; }
 
         [JsonProperty("segments")]
-        public List<RequestsDurationSegment> Segments { get; set; }
+        public List<AggregatedRequestsDurationSegment> Segments { get; set; }
     }
 }

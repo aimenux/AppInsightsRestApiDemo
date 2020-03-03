@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using App.Extractors.Payloads.RequestsFailed;
 using Newtonsoft.Json;
 
 namespace App.Extractors.Payloads.ExceptionsNumber

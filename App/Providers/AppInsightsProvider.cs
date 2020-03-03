@@ -1,6 +1,5 @@
 ﻿using System.Net.Http;
 using System.Threading.Tasks;
-using App.Extractors;
 using Microsoft.Extensions.Options;
 
 namespace App.Providers
@@ -18,6 +17,7 @@ namespace App.Providers
 
         public async Task<string> GetInsights(string query)
         {
+            //query = "metrics/requests/duration?timespan=PT30M&interval=PT5M&aggregation=min%2Cmax%2Cavg";
             var requestUri = $"{_options.Value.ApiUrl}/{query}";
             var response = await _client.GetAsync(requestUri);
             return response.IsSuccessStatusCode 

@@ -33,6 +33,7 @@ namespace App
             services.AddTransient<IMetric, RequestsFailedMetric>();
             services.AddTransient<IMetric, RequestsDurationMetric>();
             services.AddTransient<IMetric, ExceptionsNumberMetric>();
+            services.AddTransient<IMetric, AggregatedRequestsDurationMetric>();
             services.AddTransient<IExtractorFactory, ExtractorFactory>();
             services.Configure<Settings>(configuration.GetSection(nameof(Settings)));
             services.AddHttpClient<IAppInsightsProvider, AppInsightsProvider>((provider, client) =>

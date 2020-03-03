@@ -13,6 +13,7 @@ namespace App.Extractors
                 RequestsFailedMetric _ => new RequestsFailedExtractor(),
                 RequestsDurationMetric _ => new RequestsDurationExtractor(),
                 ExceptionsNumberMetric _ => new ExceptionsNumberExtractor(),
+                AggregatedRequestsDurationMetric _ => new AggregatedRequestsDurationExtractor(),
                 _ => throw new ArgumentOutOfRangeException(nameof(metric))
             };
         }
