@@ -6,6 +6,7 @@ using App.Extensions;
 using App.Extractors;
 using App.Metrics;
 using App.Providers;
+using App.Queries;
 using App.Reporters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,7 @@ namespace App
             services.AddTransient<IMetric, RequestsDurationMetric>();
             services.AddTransient<IMetric, ExceptionsNumberMetric>();
             services.AddTransient<IMetric, AggregatedRequestsDurationMetric>();
+            services.AddTransient<IQuery, PercentileResponseTimeQuery>();
             services.AddTransient<IExtractorFactory, ExtractorFactory>();
             services.Configure<Settings>(configuration.GetSection(nameof(Settings)));
             services.AddHttpClient<IAppInsightsProvider, AppInsightsProvider>((provider, client) =>

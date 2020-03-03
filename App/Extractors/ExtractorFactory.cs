@@ -1,5 +1,6 @@
 ﻿using System;
 using App.Metrics;
+using App.Queries;
 
 namespace App.Extractors
 {
@@ -15,6 +16,15 @@ namespace App.Extractors
                 ExceptionsNumberMetric _ => new ExceptionsNumberExtractor(),
                 AggregatedRequestsDurationMetric _ => new AggregatedRequestsDurationExtractor(),
                 _ => throw new ArgumentOutOfRangeException(nameof(metric))
+            };
+        }
+
+        public IExtractor CreateExtractor(IQuery query)
+        {
+            return query switch
+            {
+                PercentileResponseTimeQuery _ => new PercentileResponseTimeExtractor(),
+                _ => throw new ArgumentOutOfRangeException(nameof(query))
             };
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using App.Extractors.Payloads;
 using App.Extractors.Payloads.RequestsFailed;
 using Newtonsoft.Json;
 
